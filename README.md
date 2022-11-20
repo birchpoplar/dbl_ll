@@ -5,8 +5,8 @@ Implemented:
 - insert last
 - display forward
 - display backward
+- delete (based on key)
 
 To do:
-- delete (based on key)
 - insert after key
 - delete entire list
