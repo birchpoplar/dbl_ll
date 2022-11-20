@@ -22,7 +22,7 @@ void insert_first(int key, int data);
 void insert_last(int key, int data);
 void delete(int key);
 int find(int key);
-void substitute(int key, int nkey, int data);
+void substitute(int key, int nkey, int ndata);
 void display_forward();
 void display_backward();
 
@@ -39,7 +39,10 @@ int main()
   printf("Key %d is at loc %d\n", 2, find(2));
   printf("Key %d is at loc %d\n", 10, find(10));
   insert_first(4,3);
+  insert_first(10,10);
+  display_forward();
   delete(1);
+  substitute(10,11,11);
   insert_last(9,1);
   display_forward();
   display_backward();
@@ -112,6 +115,16 @@ int find(int key)
   } else {
     return ++i;
   }
+}
+
+void substitute(int key, int nkey, int ndata)
+{
+  struct node *link;
+  link = head;
+  while(link->key != key)
+    link = link->next;
+  link->key = nkey;
+  link->data = ndata;
 }
 
 void display_forward() {
