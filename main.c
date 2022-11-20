@@ -21,6 +21,8 @@ bool isEmpty() {
 void insert_first(int key, int data);
 void insert_last(int key, int data);
 void delete(int key);
+int find(int key);
+void substitute(int key, int nkey, int data);
 void display_forward();
 void display_backward();
 
@@ -34,6 +36,8 @@ int main()
   insert_first(2, 7);
   delete(3);
   delete(4);
+  printf("Key %d is at loc %d\n", 2, find(2));
+  printf("Key %d is at loc %d\n", 10, find(10));
   insert_first(4,3);
   delete(1);
   insert_last(9,1);
@@ -91,6 +95,23 @@ void delete(int key)
     tmp_next->prev = link->prev;
   }
   free(link);
+}
+
+int find(int key)
+{
+  struct node *link;
+  int i = 0;
+  
+  link = head;
+
+  for(i=0; link != last && link->key != key; i++)
+    link = link->next;
+
+  if (link == last) {
+    return 0;
+  } else {
+    return ++i;
+  }
 }
 
 void display_forward() {
